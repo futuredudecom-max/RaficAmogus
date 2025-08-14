@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RaficAmogus</title>
+</head>
+<body>
+  <h1>CSV Data</h1>
+  <table id="dataTable" border="1"></table>
+
+  <script>
+    fetch('RaficAmogus.csv')
+      .then(res => res.text())
+      .then(text => {
+        const rows = text.split('\n').map(r => r.split(','));
+        let html = '';
+        rows.forEach(r => {
+          html += '<tr>' + r.map(c => '<td>' + c + '</td>').join('') + '</tr>';
+        });
+        document.getElementById('dataTable').innerHTML = html;
+      });
+  </script>
+</body>
+</html>
